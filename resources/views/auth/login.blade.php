@@ -57,7 +57,7 @@
             <h1 class="h3 mb-4 fw-bold text-center">Sign in</h1>
         
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" autofocus required value="{{ old('email') }}">
                 <label for="floatingInput" class="fs-6">Email address</label>
             </div>
             <div class="form-floating mt-1">
