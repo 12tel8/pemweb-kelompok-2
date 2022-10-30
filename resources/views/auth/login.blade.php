@@ -65,7 +65,7 @@
                 <label for="floatingPassword" class="fs-6">Password</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            <p class="mt-4 mb-3 text-muted">Don't have an account? <a href="{{ route("register") }}">Register here!</a></p>
+            <p class="mt-3 mb-3 text-muted">Don't have an account? <a href="{{ route("register") }}">Register here!</a></p>
             </form>
         </main>
     </div>

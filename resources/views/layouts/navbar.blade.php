@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav fs-5 ">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="{{ route('home') }}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="/">Article</a>
@@ -17,12 +17,38 @@
           <li class="nav-item">
             <a class="nav-link disabled" href="/">Video</a>
           </li>
+          @auth
+            @if (auth()->user()->roles == 'WRITER')
+            <li class="nav-item">
+              <a class="nav-link" href="write-article">Make Article</a>
+            </li>
+            @endif
+          @endauth
         </ul>
-        <ul class="navbar-nav ms-auto">
+        @auth
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Welcome back, {{ substr(auth()->user()->name, -11) }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        @else
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 <a href="{{ route("login") }}" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Sign in</a>
             </li>
-        </ul>
+          </ul>
+        @endauth
+        
       </div>
     </div>
   </nav>
